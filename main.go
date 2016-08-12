@@ -29,6 +29,7 @@ func main() {
 	logLocation := flag.String("log", "/var/vcap/sys/log/uaa/uaa.log", "location of log")
 	timeInSeconds := flag.String("time", "60s", "how far back to look in logs in seconds")
 	users := flag.String("users", "admin", "list of users seperated by commas to look for")
+	exit := flag.Int("exit", 1, "exit code when user is found")
 	version := flag.Bool("v", false, "version")
 	flag.Parse()
 
@@ -61,7 +62,7 @@ func main() {
 				for j := range usersList {
 					if strings.Contains(splitLog[i], usersList[j]) {
 						fmt.Println(splitLog[i])
-						os.Exit(1)
+						os.Exit(*exit)
 					}
 				}
 			}
