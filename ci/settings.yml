@@ -1,0 +1,22 @@
+---
+meta:
+  name:    sherlock
+  release: Sherlock
+  target:  sw
+  url:     https://ci.vsphere.starkandwayne.com
+
+  initial_version: 0.0.1
+
+  aws:
+    access_key: (( vault "secret/aws/cfcommunity:access" ))
+    secret_key: (( vault "secret/aws/cfcommunity:secret" ))
+
+  github:
+    owner:  cloudfoundry-community
+    repo:   sherlock
+    private_key:  (( vault "secret/pipelines/sherlock/github:private" ))
+    access_token: (( vault "secret/pipelines/sherlock/github:token" ))
+
+  slack:
+    webhook: (( vault "secret/pipelines/sherlock/slack:webhook" ))
+    channel: '#botspam'
