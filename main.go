@@ -23,12 +23,19 @@ func parseTime(timeString string) time.Time {
 	return time
 }
 
+var Version = "(development)"
+
 func main() {
 	logLocation := flag.String("log", "/var/vcap/sys/log/uaa/uaa.log", "location of log")
 	timeInSeconds := flag.String("time", "60s", "how far back to look in logs in seconds")
 	users := flag.String("users", "admin", "list of users seperated by commas to look for")
+	version := flag.Bool("v", false, "version")
 	flag.Parse()
 
+	if *version {
+		fmt.Printf("%s - Version %s\n", os.Args[0], Version)
+		os.Exit(0)
+	}
 	logFile, err := ioutil.ReadFile(*logLocation)
 	if err != nil {
 		log.Fatal(err)
