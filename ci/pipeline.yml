@@ -27,7 +27,7 @@ meta:
     force_static_binary: false
 
   aws:
-    bucket:     (( concat meta.name "-pipeline" ))
+    bucket:     (( concat meta.name "-pipeline-cc" ))
     access_key: (( param "Please set your AWS Access Key ID" ))
     secret_key: (( param "Please set your AWS Secret Key ID" ))
 
